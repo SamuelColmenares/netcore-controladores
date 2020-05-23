@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IndexEstilos</title>
+</head>
+<body>
+    <h1 style="color:blue;">Página con estilos</h1>
+    <br />
+    <hr />
+    <h2>@ViewBag.Subtitulo</h2>
+
+    <hr />
+    <br />
+    <form action="/home/indexEstilos" method="post">
+        <input type="text" name="usuario" id="miperro" value="@Model" />
+        <span style="color:red">@ViewBag.Detalle</span>
+        <br />
+        <button type="submit">Direccionar</button>
+    </form>
+</body>
+</html>
