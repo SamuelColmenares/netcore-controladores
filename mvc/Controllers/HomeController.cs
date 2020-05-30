@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using mvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace mvc.Controllers
 {
     public class HomeController : Controller
     {
+        private IEmpleadoRepository _empleadoRepository;
+
+        public HomeController(IEmpleadoRepository empleadoRepository)
+        {
+            _empleadoRepository = empleadoRepository;
+        }
+
         public string Index(string id)
         {
             
@@ -18,7 +26,9 @@ namespace mvc.Controllers
             }
             else
             {
-                return "sin variables";
+                //Empleado empleado = new MockEmpleadoRepository().GetEmpleado(1);
+                Empleado empleado = _empleadoRepository.GetEmpleado(1);
+                return empleado.Nombre;
             }
         }
 
@@ -27,6 +37,7 @@ namespace mvc.Controllers
             return "ejemplo de otra acción en el controlador";
         }
 
+        [HttpGet]
         public JsonResult JsonPrueba()
         {
             return Json(new { nombre = "Samuel", apellido = "Colmenares" });

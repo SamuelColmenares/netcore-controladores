@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using mvc.Models;
 
 namespace mvc
 {
@@ -15,6 +16,7 @@ namespace mvc
          public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<IEmpleadoRepository, MockEmpleadoRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
